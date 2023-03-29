@@ -5,7 +5,7 @@ CRC_16 = '11000000000000101'
 GENERATOR_POLYNOMIAL = CRC_16
 
 
-def remove_insignificant_bits(m: str) -> str:
+def remove_nonsignificant_bits(m: str) -> str:
     if len(m) < 2:
         return m
 
@@ -31,13 +31,13 @@ def crc(m: str, polynomial: str, is_checking=False):
 
     bits_to_divide = ''
     bits_to_divide += m[:p_degree]
-    bits_to_divide = remove_insignificant_bits(bits_to_divide)
+    bits_to_divide = remove_nonsignificant_bits(bits_to_divide)
     m = m[p_degree:]
 
     while len(m) > 0:
         while len(bits_to_divide) < p_degree and len(m) > 0:
             bits_to_divide += m[0]
-            bits_to_divide = remove_insignificant_bits(bits_to_divide)
+            bits_to_divide = remove_nonsignificant_bits(bits_to_divide)
             m = m[1:]
 
         if len(bits_to_divide) == p_degree:
