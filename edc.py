@@ -29,10 +29,8 @@ def crc(m: str, polynomial: str, is_checking=False):
         for _ in range(p_degree - 1):
             m = m + '0'
 
+    m = remove_nonsignificant_bits(m)
     bits_to_divide = ''
-    bits_to_divide += m[:p_degree]
-    bits_to_divide = remove_nonsignificant_bits(bits_to_divide)
-    m = m[p_degree:]
 
     while len(m) > 0:
         while len(bits_to_divide) < p_degree and len(m) > 0:
