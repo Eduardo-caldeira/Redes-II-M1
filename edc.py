@@ -1,3 +1,6 @@
+import re
+
+# CRC-16 = x^16 + x^15 + x^2 + 1
 CRC_16 = '11000000000000101'
 GENERATOR_POLYNOMIAL = CRC_16
 
@@ -47,17 +50,37 @@ def crc(m: str, polynomial: str, is_checking=False):
     return rest
 
 
-def sender(message, polynomial):
+def sender(message, polynomial=GENERATOR_POLYNOMIAL):
     p_degree = len(polynomial) - 1
     rest = crc(message, polynomial)
 
     return message + rest[-p_degree:]
 
 
-def receiver(message, polynomial):
+def receiver(message, polynomial=GENERATOR_POLYNOMIAL):
     rest = crc(message, polynomial, True)
     return rest
 
 
 if __name__ == '__main__':
-    print(sender('011101010011101001110010110101100010', GENERATOR_POLYNOMIAL))
+    message = input('mensagem a ser enviada: ')
+
+    just_binary_digits_check = re.compile(r'[^01]')
+
+    if just_binary_digits_check.search(message):
+        raise Exception('apenas strings binary-like são permitidas')
+
+    if len(message) not in [32, 64, 128]:
+        raise Exception('mensagem de tamanho inválido')
+
+    print('-------------------- sender --------------------')
+    verified_message = sender(message)
+    print('mensagem original:   ', message)
+    print('mensagem + checksum: ', verified_message)
+    print('================================================')
+
+    print('\n\n-------------------- receiver --------------------')
+    rest = receiver(verified_message)
+    print('mensagem recebida:                   ', verified_message)
+    print('resto da divisão mensagem/polinômio: ', rest)
+    print('================================================')

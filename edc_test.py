@@ -26,11 +26,11 @@ class TestStringToBinaryParser(unittest.TestCase):
 
     def test_sender_polynomial_16_bits_arc(self):
         self.assertEqual(
-            sender('011101010011101001110010110101100010', CRC_16), '0111010100111010011100101101011000101001101011010000')
+            sender('01110101001110100111001011010110', CRC_16), '011101010011101001110010110101100010100110101101')
 
     def test_receiver_polynomial_16_bits_arc(self):
         self.assertEqual(
-            receiver('0111010100111010011100101101011000101001101011010000', CRC_16), '00000000000000000')
+            receiver('011101010011101001110010110101100010100110101101', CRC_16), '00000000000000000')
 
 
 if __name__ == "__main__":
