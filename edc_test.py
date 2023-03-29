@@ -17,12 +17,12 @@ class TestStringToBinaryParser(unittest.TestCase):
                          '10011'), '011101010011101001110010110101100010')
 
     def test_receiver(self):
-        self.assertEqual(receiver('11010110111110', '10011'), '00000')
-        self.assertEqual(receiver('00101001011011', '10011'), '00000')
+        self.assertEqual(receiver('11010110111110', '10011'), '0000')
+        self.assertEqual(receiver('00101001011011', '10011'), '0000')
         self.assertEqual(receiver('011101010011101000111', '10011'),
-                         '00000')
+                         '0000')
         self.assertEqual(receiver('011101010011101001110010110101100010',
-                         '10011'), '00000')
+                         '10011'), '0000')
 
     def test_sender_polynomial_16_bits_arc(self):
         self.assertEqual(
@@ -30,7 +30,7 @@ class TestStringToBinaryParser(unittest.TestCase):
 
     def test_receiver_polynomial_16_bits_arc(self):
         self.assertEqual(
-            receiver('011101010011101001110010110101100010100110101101', CRC_16), '00000000000000000')
+            receiver('011101010011101001110010110101100010100110101101', CRC_16), '0000000000000000')
 
 
 if __name__ == "__main__":

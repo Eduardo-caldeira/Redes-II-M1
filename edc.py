@@ -41,7 +41,7 @@ def crc(m: str, polynomial: str, is_checking=False):
         if len(bits_to_divide) == p_degree:
             bits_to_divide = xor(bits_to_divide, polynomial)
 
-    while len(bits_to_divide) < p_degree:
+    while len(bits_to_divide) < p_degree - 1:
         bits_to_divide = '0' + bits_to_divide
 
     rest = bits_to_divide
