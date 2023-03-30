@@ -8,7 +8,7 @@ Este repositório é referente ao trabalho da M1 da disciplina de Redes II do cu
 > - Matheus Pedroni
 
 * Arquivos no Repositório
-> - Arquivos do Packet Tracer
+> - Arquivos do Packet Tracer (8.2.1)
 >   - VLAN e Switch
 >   - Otimização do STP em redes usando camada 2
 > - Relatório de todas as 3 etapas do trabalho (WireShark, Packet Tracer e EDC)
